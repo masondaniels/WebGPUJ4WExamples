@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>coffee.mason.webgpujwexamples</groupId>
+	<artifactId>WebGPUJ4WExamples</artifactId>
+	<version>0.0.1</version>
+
+
+
+	<repositories>
+		<!-- WebGPUJ4W repository -->
+		<repository>
+			<id>mason-coffee</id>
+			<url>http://maven.mason.coffee/releases</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- TeaVM dependency -->
+		<dependency>
+			<groupId>org.teavm</groupId>
+			<artifactId>teavm-classlib</artifactId>
+			<version>0.8.1</version>
+		</dependency>
+		<!-- WebGPUJ4W dependency -->
+		<dependency>
+			<groupId>coffee.mason.webgpuj4w</groupId>
+			<artifactId>WebGPUJ4W</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+
+	</dependencies>
+	
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- TeaVM Maven Plugin -->
+			<plugin>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-maven-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<source>11</source>
+							<target>11</target>
+							<mainClass>coffee.mason.webgpuj4wexamples.TriangleExample</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
