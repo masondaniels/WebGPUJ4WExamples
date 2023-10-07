@@ -31,7 +31,8 @@ public class TriangleExample {
 			"                }";
 	
 	private static String fragmentCode = "struct Uniform {\r\n" + 
-			"                    time: f32, // in seconds\r\n" + 
+			"                    time: f32, // in seconds\r\n" +
+			"					 blungus: i32,\r\n" + 
 			"                };\r\n" + 
 			"\r\n" + 
 			"                @group(0) @binding(0)\r\n" + 
@@ -61,7 +62,7 @@ public class TriangleExample {
 				WebGPUVisibility[] visibility = {WebGPUVisibility.FRAGMENT};
 				WebGPUBufferUsage[] usages = {WebGPUBufferUsage.UNIFORM, WebGPUBufferUsage.COPY_DST};
 				// The name "spongebob" is the internal (java) name of the javascript buffer object. It is used when writing values to the buffer.
-				WebGPUBuffer uniform = new WebGPUBuffer("spongebob", 0, 4, WebGPUBufferType.UNIFORM, visibility, usages);
+				WebGPUBuffer uniform = new WebGPUBuffer("spongebob", 0, 8, WebGPUBufferType.UNIFORM, visibility, usages);
 				WebGPUBuffer[] buffers = {uniform};
 				return buffers;
 			}
@@ -137,9 +138,10 @@ public class TriangleExample {
 				passEncoder.end();
 				// Write f32 time at position 0 using the buffer name "spongebob" defined in webgpu instance config
 				encoder.writeFloat("spongebob", (float)((System.currentTimeMillis()-init)*0.001), 0);
-				// If you wanted to write another float, you'd have to update the uniform buffer "spongebob" size (from 4 to 8)
+				encoder.writeInt("spongebob", 200, 4);
+				// If you wanted to write another float, you'd have to update the uniform buffer "spongebob" size (from 8 to 12)
 				// as well as write the float here like so:
-				// encoder.writeFloat("spongebob", (float) float, 4);
+				// encoder.writeFloat("spongebob", (float) float, 8);
 				encoder.submit();
 			}
 			
