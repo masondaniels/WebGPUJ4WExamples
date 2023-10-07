@@ -1,6 +1,11 @@
 # WebGPUJ4W Examples
 This repository has examples using the WebGPUJ4W library.
 
+## Visual
+This is the output produce from [this Main class](https://github.com/masondaniels/WebGPUJ4WExamples/blob/master/src/main/java/coffee/mason/webgpuj4wexamples/TriangleExample.java):
+
+![](https://mason.coffee/gifs/wgteu.gif)
+
 ## Build
 To compile the Java code to JavaScript, use  ```mvn package```. The output will be built to the ```.\target\classes``` directory. Then copy the ```.\src\main\resources\index.html``` file to the built output at ```.\target\classes``` and open the copied index.html in a browser which supports WebGPU (Chrome).
 
